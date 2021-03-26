@@ -23,8 +23,11 @@ import org.netbeans.jemmy.QueueTool;
 import org.netbeans.jemmy.operators.ContainerOperator;
 import org.netbeans.jemmy.operators.JComponentOperator;
 import org.netbeans.jemmy.operators.JPopupMenuOperator;
+import org.netbeans.jemmy.util.RegExComparator;
+import org.robotframework.swing.common.Identifier;
 import org.robotframework.swing.popup.PopupMenuOperatorFactory;
 
+import java.awt.*;
 import java.awt.event.InputEvent;
 
 public class ComponentOperator extends JComponentOperator {
@@ -54,6 +57,12 @@ public class ComponentOperator extends JComponentOperator {
                 return null;
             }
         });
+    }
+
+    public static ComponentOperator newOperatorForComponent(ContainerOperator context, String name){
+        Identifier identifier = new Identifier(name);
+        context.findSubComponent((ComponentChooser) new RegExComparator());
+        return findComponent();
     }
 
     private int toInputEventMask(String inputEventFieldName) {

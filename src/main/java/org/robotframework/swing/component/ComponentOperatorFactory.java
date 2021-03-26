@@ -29,6 +29,6 @@ public class ComponentOperatorFactory extends DefaultContextVerifyingOperatorFac
 
     @Override
     public ComponentOperator createOperatorByName(String name) {
-        return new ComponentOperator((ContainerOperator) Context.getContext(), new ByNameComponentChooser(name));
+        return ComponentOperator.newOperatorForComponent((ContainerOperator) Context.getContext(), name);
     }
 }
